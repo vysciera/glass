@@ -1,3 +1,4 @@
+// Package chess manages board position & engine logic
 package chess
 
 type Board [64]Piece
