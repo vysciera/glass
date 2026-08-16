@@ -26,5 +26,28 @@ func NewStartingBoard() Board {
 		})
 	}
 
+	backRank := [8]PieceType{
+		Rook,
+		Knight,
+		Bishop,
+		Queen,
+		King,
+		Bishop,
+		Knight,
+		Rook,
+	}
+
+	for file, pieceType := range backRank {
+		board.Set(file, 0, Piece{
+			Type:  pieceType,
+			Color: White,
+		})
+
+		board.Set(file, 7, Piece{
+			Type:  pieceType,
+			Color: Black,
+		})
+	}
+
 	return board
 }
