@@ -10,3 +10,21 @@ func Square(file, rank int) int {
 func (b *Board) Set(file, rank int, piece Piece) {
 	b[Square(file, rank)] = piece
 }
+
+func NewStartingBoard() Board {
+	var board Board
+
+	for file := 0; file < 8; file++ {
+		board.Set(file, 1, Piece{
+			Type:  Pawn,
+			Color: White,
+		})
+
+		board.Set(file, 6, Piece{
+			Type:  Pawn,
+			Color: Black,
+		})
+	}
+
+	return board
+}
