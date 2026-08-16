@@ -51,3 +51,59 @@ func TestSquare(t *testing.T) {
 		})
 	}
 }
+
+func TestBoardSet(t *testing.T) {
+	var board Board
+
+	t.Run("set piece at e1", func(t *testing.T) {
+		want := Piece{
+			Type:  King,
+			Color: White,
+		}
+
+		board.Set(4, 0, want)
+		got := board[Square(4, 0)]
+
+		if got != want {
+			t.Errorf("piece at e1 = %+v; want %+v", got, want)
+		}
+	})
+}
+
+func TestNewStartingBoard(t *testing.T) {
+	board := NewStartingBoard()
+
+	t.Run("white king starts on e1", func(t *testing.T) {
+		want := Piece{
+			Type:  King,
+			Color: White,
+		}
+
+		got := board[Square(4, 0)]
+
+		if got != want {
+			t.Errorf("piece at e1 = %+v; want %+v", got, want)
+		}
+	})
+
+	t.Run("black king starts on e8", func(t *testing.T) {
+		want := Piece{
+			Type:  King,
+			Color: Black,
+		}
+
+		got := board[Square(4, 7)]
+
+		if got != want {
+			t.Errorf("piece at e8 = %+v; want %+v", got, want)
+		}
+	})
+
+	t.Run("e4 starts empty", func(t *testing.T) {
+		got := board[Square(4, 3)]
+
+		if got.Type != NoPiece {
+			t.Errorf("e4 piece type = %+v; want %+v", got.Type, NoPiece)
+		}
+	})
+}
