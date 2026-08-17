@@ -23,3 +23,48 @@ type Piece struct {
 	Type  PieceType
 	Color Color
 }
+
+func (p Piece) Symbol() string {
+	switch p.Type {
+	case NoPiece:
+		return "."
+
+	case King:
+		if p.Color == White {
+			return "K"
+		}
+		return "k"
+
+	case Queen:
+		if p.Color == White {
+			return "Q"
+		}
+		return "q"
+
+	case Bishop:
+		if p.Color == White {
+			return "B"
+		}
+		return "b"
+
+	case Knight:
+		if p.Color == White {
+			return "N"
+		}
+		return "n"
+
+	case Rook:
+		if p.Color == White {
+			return "R"
+		}
+		return "r"
+
+	case Pawn:
+		if p.Color == White {
+			return "P"
+		}
+		return "p"
+	}
+
+	return "?"
+}
