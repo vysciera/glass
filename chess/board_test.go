@@ -107,3 +107,32 @@ func TestNewStartingBoard(t *testing.T) {
 		}
 	})
 }
+
+func TestBoardString(t *testing.T) {
+	var board Board
+
+	board.Set(0, 0, Piece{
+		Type:  Rook,
+		Color: White,
+	})
+
+	board.Set(7, 7, Piece{
+		Type:  King,
+		Color: Black,
+	})
+
+	got := board.String()
+
+	want := `. . . . . . . k
+	. . . . . . . .
+	. . . . . . . .
+	. . . . . . . .
+	. . . . . . . .
+	. . . . . . . .
+	. . . . . . . .
+	R . . . . . . .`
+
+	if got != want {
+		t.Errorf("Board.String() =\n%q\nwant:\n%q", got, want)
+	}
+}
