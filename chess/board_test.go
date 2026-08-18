@@ -124,13 +124,13 @@ func TestBoardString(t *testing.T) {
 	got := board.String()
 
 	want := `. . . . . . . k
-	. . . . . . . .
-	. . . . . . . .
-	. . . . . . . .
-	. . . . . . . .
-	. . . . . . . .
-	. . . . . . . .
-	R . . . . . . .`
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+. . . . . . . .
+R . . . . . . .`
 
 	if got != want {
 		t.Errorf("Board.String() =\n%q\nwant:\n%q", got, want)
